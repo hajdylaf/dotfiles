@@ -1,6 +1,4 @@
-# My configuration files
+# dotfiles
 
-## Supported OS
-- Debian 11 (Bullseye)
-- Debian 12 (Bookworm)
-- Debian on WSL
+My configuration files for ZSH and tools.
+
