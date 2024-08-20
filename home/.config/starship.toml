@@ -68,7 +68,7 @@ disabled = false
 [conda]
 format = '[$symbol$environment](dimmed green) '
 ignore_base = false
-symbol = "🐍 "
+symbol = "󱔎 "
 
 [python]
 symbol = "󰌠 "
@@ -82,9 +82,6 @@ symbol = " "
 
 [scala]
 symbol = " "
-
-[spack]
-symbol = "🅢 "
 
 [aws]
 symbol = "  "

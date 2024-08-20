@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cp -ru home/.* $HOME/.
-
 cp -ru $HOME/.zsh home/.
 cp -ru $HOME/.zshrc home/.
 cp -ru $HOME/.condarc home/.
@@ -15,3 +13,4 @@ cp -ru $HOME/.config/starship.toml home/.config/.
 cp -ru $HOME/.local/bin/frm home/.local/bin/.
 cp -ru $HOME/.local/bin/gpull home/.local/bin/.
 
+cp home/.[^.]* $HOME/. -ru
