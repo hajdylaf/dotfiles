@@ -1,3 +1,5 @@
 [user]
 	email = hajdylaf@gmail.com
 	name = Filip Hajdyła
+[credential]
+	helper = cache

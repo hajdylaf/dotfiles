@@ -1,0 +1,7 @@
+
+[Default Applications]
+text/html=chrome.desktop
+x-scheme-handler/http=chrome.desktop
+x-scheme-handler/https=chrome.desktop
+x-scheme-handler/about=chrome.desktop
+x-scheme-handler/unknown=chrome.desktop
