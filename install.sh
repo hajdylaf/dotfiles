@@ -21,6 +21,7 @@ sudo pacman -Sy --needed --noconfirm \
     git \
     gnome-browser-connector \
     go \
+    keepassxc \
     less \
     libreoffice-fresh \
     man \
