@@ -111,8 +111,8 @@ source $ZSH/oh-my-zsh.sh
 ## Aliases
 
 # clipboard
-alias c="xclip"
-alias v="xclip -o"
+alias c="xclip -selection clipboard"
+alias v="xclip -o -selection clipboard"
 
 # ls
 alias ls='ls --color=auto'
