@@ -2,8 +2,14 @@
 
 My configuration files for Arch Linux, ZSH and other tools.
 
-Install:
+Full installation:
 
 ```sh
-sh -c "$(curl https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/configure.sh)"
+sh -c "$(curl https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/install.sh)"
+```
+
+Only sync dotfiles:
+
+```sh
+sh -c "$(curl https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 ```
