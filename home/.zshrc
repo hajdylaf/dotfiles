@@ -121,8 +121,6 @@ alias la="ls -lAhX"
 
 # other
 alias vi="nvim"
-#alias tree="tre -a"
-alias bat="batcat"
 alias fcd='cd $(find . -type d | fzf)'
 alias grep="grep --color=auto"
 alias mysql="mysql --help"

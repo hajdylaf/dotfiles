@@ -1,4 +1,4 @@
-colorscheme koehler
+colorscheme wildcharm
 
 set number
 set relativenumber
