@@ -58,8 +58,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # sync dotfiles
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
-rsync -r home/.* $HOME/.
-rsync -r home/* $HOME/.
+echo
+echo "Syncing dotfiles:"
+rsync -rv home/.* $HOME/.
+rsync -rv home/* $HOME/.
+echo
 cd -
 rm -rf dotfiles
 
