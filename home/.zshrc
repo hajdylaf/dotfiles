@@ -126,6 +126,7 @@ alias grep="grep --color=auto"
 alias mysql="mysql --help"
 alias src="source ~/.zshrc"
 alias ncdu="ncdu --color dark"
+alias pwgen="pwgen --secure --symbols -N 1 20 | xclip -selection clipboard"
 
 # user bin
 export PATH=$HOME/.local/bin/:$PATH
