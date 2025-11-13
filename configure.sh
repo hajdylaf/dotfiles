@@ -1,3 +1,6 @@
+#!/bin/sh
+
+echo
 echo "==================================="
 echo "ARCH LINUX POST-INSTALLATION SCRIPT"
 echo "==================================="
@@ -15,6 +18,7 @@ sudo pacman -Sy --needed --noconfirm \
     discord \
     dust \
     fzf \
+    git \
     gnome-browser-connector \
     go \
     less \
@@ -27,7 +31,8 @@ sudo pacman -Sy --needed --noconfirm \
     tldr \
     tmux \
     tree \
-    xclip
+    xclip \
+    zsh
 
 # clear pacman cache
 sudo pacman -Scc --noconfirm
@@ -46,6 +51,9 @@ yay -Sy --needed \
 
 # clear yay cache
 yay -Scc
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # sync dotfiles
 git clone https://github.com/hajdylaf/dotfiles.git
