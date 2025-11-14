@@ -42,7 +42,7 @@ sudo pacman -Scc --noconfirm
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -i
-cd -
+cd - &> /dev/null
 rm -rf yay
 
 # install yay packages
@@ -59,12 +59,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # sync dotfiles
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
-echo
-echo "Syncing dotfiles:"
 rsync -rv home/.* $HOME/.
 rsync -rv home/* $HOME/.
-echo
-cd -
+cd - &> /dev/null
 rm -rf dotfiles
 
 # create ssh key
