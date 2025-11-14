@@ -24,6 +24,7 @@ sudo pacman -Sy --needed --noconfirm \
     keepassxc \
     less \
     libreoffice-fresh \
+    linux-zen-headers \
     man \
     ncdu \
     neovim \
