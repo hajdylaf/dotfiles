@@ -56,12 +56,7 @@ yay -Scc
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # sync dotfiles
-git clone https://github.com/hajdylaf/dotfiles.git
-cd dotfiles
-rsync -rv home/.* $HOME/.
-rsync -rv home/* $HOME/.
-cd - &> /dev/null
-rm -rf dotfiles
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 
 # create ssh key
 ssh-keygen -t ecdsa -C $USER_EMAIL

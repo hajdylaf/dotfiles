@@ -128,7 +128,7 @@ alias src="source ~/.zshrc"
 alias ncdu="ncdu --color dark"
 alias pwgen="pwgen --secure --symbols -N 1 20 | xclip -selection clipboard"
 alias flush="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'"
-alias dotsync="curl https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh | sh"
+alias dotsync="curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh | sh"
 
 ## User bin
 export PATH=$HOME/.local/bin/:$PATH
