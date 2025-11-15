@@ -20,7 +20,7 @@ chmod +x $HOME/.local/bin/*
 
 # load desktop settings
 dconf load / < desktop.cfg
-budgie-panel --replace &
+nohup budgie-panel --replace &> /dev/null &
 
 # clean up
 cd - &> /dev/null
