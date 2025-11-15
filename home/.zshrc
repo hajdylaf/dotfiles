@@ -17,7 +17,7 @@ ZSH_THEME="hajdylaf"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -25,8 +25,8 @@ ZSH_THEME="hajdylaf"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode auto      # update automatically without asking
 
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
@@ -41,7 +41,7 @@ ZSH_THEME="hajdylaf"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -130,6 +130,5 @@ alias pwgen="pwgen --secure --symbols -N 1 20 | xclip -selection clipboard"
 alias flush="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'"
 alias dotsync="curl https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh | sh"
 
-# user bin
+## User bin
 export PATH=$HOME/.local/bin/:$PATH
-
