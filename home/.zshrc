@@ -72,9 +72,9 @@ ENABLE_CORRECTION="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  gpg-agent
   keychain
   ssh-agent
-  gpg-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,25 +110,30 @@ source $ZSH/oh-my-zsh.sh
 
 ## Aliases
 
-# clipboard
+# terminal-clipboard integration
 alias c="xclip -selection clipboard"
 alias v="xclip -o -selection clipboard"
 
 # ls
-alias ls='ls --color=auto'
-alias ll="ls -lhX"
 alias la="ls -lAhX"
+alias ll="ls -lhX"
+alias ls='ls --color=auto'
 
 # other
-alias vi="nvim"
+alias dotsync="curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh | sh"
 alias fcd='cd $(find . -type d | fzf)'
+alias flush="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'"
 alias grep="grep --color=auto"
 alias mysql="mysql --help"
-alias src="source ~/.zshrc"
 alias ncdu="ncdu --color dark"
 alias pwgen="pwgen --secure --symbols -N 1 20 | xclip -selection clipboard"
-alias flush="sudo sh -c 'echo 3 > /proc/sys/vm/drop_caches'"
-alias dotsync="curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh | sh"
+alias src="source ~/.zshrc"
+alias vi="nvim"
+
+# turn off globbing for certain commands
+alias find="noglob find"
+alias frm="noglob frm"
+alias rmtrail="noglob rmtrail"
 
 ## User bin
 export PATH=$HOME/.local/bin/:$PATH
