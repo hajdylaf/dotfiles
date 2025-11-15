@@ -32,7 +32,10 @@ sudo pacman -Sy --needed --noconfirm \
     tldr \
     tmux \
     tree \
+    ttf-fira-code \
+    unzip \
     xclip \
+    zip \
     zsh
 
 # clear pacman cache
