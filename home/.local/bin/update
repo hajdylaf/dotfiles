@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Perform full system update
+yay -Syuu
+sudo pacman -Syuu
+sudo mandb && sudo tldr -u
