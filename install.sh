@@ -20,6 +20,7 @@ sudo pacman -Sy --needed --noconfirm \
     git \
     go \
     keepassxc \
+    kitty \
     less \
     libreoffice-fresh \
     linux-zen-headers \
@@ -52,6 +53,7 @@ yay -Sy --needed \
 yay -Scc
 
 # install oh-my-zsh
+# TODO: make installer exit zsh shell after installation and return to next steps
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # sync dotfiles
