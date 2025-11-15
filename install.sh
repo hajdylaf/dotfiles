@@ -19,7 +19,6 @@ sudo pacman -Sy --needed --noconfirm \
     dust \
     fzf \
     git \
-    gnome-browser-connector \
     go \
     keepassxc \
     less \
@@ -48,7 +47,6 @@ rm -rf yay
 
 # install yay packages
 yay -Sy --needed \
-    gnome-shell-extension-desktop-icons-ng \
     vscodium
 
 # clear yay cache
