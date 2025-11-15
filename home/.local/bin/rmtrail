@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Check if the file is passed as an argument
+if [ -z "$1" ]; then
+    printf "Usage: $(basename $0) <file|glob>\n"
+    exit 1
+fi
+
+files=$(
+    find . -wholename "$1" -type f \
+        -not -path "./.git/*" \
+        -exec grep -Iq . {} \; -print
+)
+
+if [ "$files" = "" ]; then
+    printf "No matching files found.\n"
+    exit 0
+fi
+
+# If glob is "*", show affected files and ask for confirmation
+if [ "$1" = "*" ]; then
+    printf "The following files will be modified:\n"
+    printf "$files\n\n"
+    read -p "Continue?[y/N]: " ans
+    if [[ ! "$ans" =~ (Y|y|YES|Yes|yes) ]]; then
+        printf "Exited without changes.\n"
+        exit 0
+    fi
+fi
+
+# Print file path if no answer was provided
+if [ ! "$1" = "*" ]; then
+    printf "Modifying files:\n"
+fi
+
+for file in $files; do
+    # Print file path if no answer was provided
+    if [ ! "$1" = "*" ]; then
+        printf "$file\n"
+    fi
+
+    # Remove trailing whitespaces
+    sed -i 's/[ \t]*$//' "$file"
+
+    # Remove all trailing blank lines
+    perl -0777 -pe 's/(\r?\n)+\z//;' -i "$file"
+
+    # Add one blank line at the end
+    printf '\n' >> "$file"
+done
+
+printf "Done.\n"
