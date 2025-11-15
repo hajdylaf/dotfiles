@@ -7,3 +7,6 @@ rsync -rv home/.* $HOME/.
 rsync -rv home/* $HOME/.
 cd - &> /dev/null
 rm -rf dotfiles
+
+# load desktop settings
+dconf load / < desktop.cfg
