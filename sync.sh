@@ -15,6 +15,9 @@ cd dotfiles
 rsync -rv home/.* $HOME/.
 rsync -rv home/* $HOME/.
 
+# make scripts executable
+chmod +x $HOME/.local/bin/*
+
 # load desktop settings
 dconf load / < desktop.cfg
 
