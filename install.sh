@@ -1,11 +1,10 @@
 #!/bin/sh
 
+# startup info
 echo
-echo "==================================="
-echo "ARCH LINUX POST-INSTALLATION SCRIPT"
-echo "==================================="
-echo
-echo "Developed by: hajdylaf"
+echo "===================================="
+echo "#      STARTING INSTALLATION       #"
+echo "===================================="
 echo
 read -p 'Enter e-mail: ' USER_EMAIL
 
@@ -60,3 +59,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/hea
 
 # create ssh key
 ssh-keygen -t ecdsa -C $USER_EMAIL
+
+# exit info
+echo
+echo "===================================="
+echo "#      INSTALLATION COMPLETE       #"
+echo "===================================="
+echo
