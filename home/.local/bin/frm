@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Check if the file is passed as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $(basename $0) <glob>"
+    exit 1
+fi
 
 # Find and remove all
-find . -name $1 -exec rm -rf {} \;
+find . -name "$1" -exec rm {} \;
