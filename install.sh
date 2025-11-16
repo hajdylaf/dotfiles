@@ -64,13 +64,6 @@ makepkg -i
 cd - &> /dev/null
 rm -rf yay
 
-# install yay packages
-yay -Sy --needed \
-    vscodium
-
-# clear yay cache
-yay -Scc
-
 # install oh-my-zsh
 # TODO: make installer exit zsh shell after installation and return to next steps
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
