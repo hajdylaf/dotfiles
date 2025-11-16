@@ -1,22 +1,29 @@
 #!/bin/sh
 
+## System setup
+
+# check if user is root
+if [ ! "$(whoami)" = "root" ]; then
+    echo "User not root. Exitting..."
+    exit 0
+fi
+
 # startup info
 echo
 echo "===================================="
 echo "#      STARTING INSTALLATION       #"
 echo "===================================="
 echo
-read -p 'Enter e-mail: ' USER_EMAIL
 
 # update system
-sudo pacman -Syuu --noconfirm
+pacman -Syuu --noconfirm
 
 # update zen kernel headers
-sudo pacman -Sy --needed --noconfirm \
+pacman -Sy --needed --noconfirm \
     linux-zen-headers
 
 # install CLI utils
-sudo pacman -Sy --needed --noconfirm \
+pacman -Sy --needed --noconfirm \
     bat \
     dust \
     fzf \
@@ -36,13 +43,18 @@ sudo pacman -Sy --needed --noconfirm \
     zsh
 
 # install themes and fonts
-sudo pacman -Sy --needed --noconfirm \
+pacman -Sy --needed --noconfirm \
+    lightdm-webkit-theme-litarvan \
+    lightdm-webkit2-greeter \
     materia-gtk-theme \
     papirus-icon-theme \
     ttf-fira-code
 
+# sync system-wide config
+rsync -rv etc/* /etc/.
+
 # install GUI apps
-sudo pacman -Sy --needed --noconfirm \
+pacman -Sy --needed --noconfirm \
     chromium \
     discord \
     keepassxc \
@@ -52,28 +64,11 @@ sudo pacman -Sy --needed --noconfirm \
     signal-desktop
 
 # make kitty default terminal for gtk-launch
-sudo rm -f /usr/bin/xdg-terminal-exec
-sudo ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
+rm -f /usr/bin/xdg-terminal-exec
+ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
 # clear pacman cache
-sudo pacman -Scc --noconfirm
-
-# install yay and clean up
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -i
-cd - &> /dev/null
-rm -rf yay
-
-# install oh-my-zsh
-# TODO: make installer exit zsh shell after installation and return to next steps
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# sync dotfiles
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
-
-# create ssh key
-ssh-keygen -t ecdsa -C $USER_EMAIL
+pacman -Scc --noconfirm
 
 # exit info
 echo
@@ -81,3 +76,20 @@ echo "===================================="
 echo "#      INSTALLATION COMPLETE       #"
 echo "===================================="
 echo
+
+## User setup
+
+# # install yay and clean up
+# git clone https://aur.archlinux.org/yay.git
+# cd yay
+# makepkg -i
+# cd - &> /dev/null
+# rm -rf yay
+
+# # install oh-my-zsh
+# # TODO: make installer exit zsh shell after installation and return to next steps
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# # sync dotfiles
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
+
