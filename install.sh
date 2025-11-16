@@ -50,13 +50,6 @@ pacman -Sy --needed --noconfirm \
     papirus-icon-theme \
     ttf-fira-code
 
-# sync system-wide config
-git clone https://github.com/hajdylaf/dotfiles.git
-cd dotfiles
-rsync -rv etc/* /etc/.
-cd - &> /dev/null
-rm -rf dotfiles
-
 # install GUI apps
 pacman -Sy --needed --noconfirm \
     chromium \
@@ -66,6 +59,14 @@ pacman -Sy --needed --noconfirm \
     libreoffice-fresh \
     nemo \
     signal-desktop
+
+
+# sync system-wide config
+git clone https://github.com/hajdylaf/dotfiles.git
+cd dotfiles
+rsync -rv etc/* /etc/.
+cd - &> /dev/null
+rm -rf dotfiles
 
 # make kitty default terminal for gtk-launch
 rm -f /usr/bin/xdg-terminal-exec
