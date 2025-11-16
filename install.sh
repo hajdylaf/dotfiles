@@ -1,6 +1,8 @@
 #!/bin/sh
 
-## System setup
+### system setup
+
+## start post-installation setup
 
 # check if user is root
 if [ ! "$(whoami)" = "root" ]; then
@@ -8,7 +10,7 @@ if [ ! "$(whoami)" = "root" ]; then
     exit 0
 fi
 
-# startup info
+# show startup message
 echo
 echo "===================================="
 echo "#      STARTING INSTALLATION       #"
@@ -21,6 +23,8 @@ for i in {5..1}; do
     sleep 1
 done
 echo
+
+## package installation
 
 # update system
 pacman -Syuu --noconfirm
@@ -67,20 +71,38 @@ pacman -Sy --needed --noconfirm \
     nemo \
     signal-desktop
 
+# clear pacman cache
+pacman -Scc --noconfirm
 
-# sync system-wide config
-git clone https://github.com/hajdylaf/dotfiles.git
-cd dotfiles
-rsync -rv etc/* /etc/.
-cd - &> /dev/null
-rm -rf dotfiles
+## configuration
 
 # make kitty default terminal for gtk-launch
 rm -f /usr/bin/xdg-terminal-exec
 ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
-# clear pacman cache
-pacman -Scc --noconfirm
+# clone dotfiles repository
+git clone https://github.com/hajdylaf/dotfiles.git
+cd dotfiles
+
+# sync system-wide config
+rsync -rv etc/* /etc/.
+
+# sync dotfiles to skel
+rsync -rv home/.* /etc/skel/.
+rsync -rv home/* /etc/skel/.
+
+# make scripts executable
+chmod +x /etc/skel/.local/bin/*
+
+# load desktop settings
+dconf load / < desktop.cfg
+nohup budgie-panel --replace &> /dev/null &
+
+# clean up
+cd - &> /dev/null
+rm -rf dotfiles
+
+## finish and exit
 
 # exit info
 echo
@@ -89,7 +111,7 @@ echo "#      INSTALLATION COMPLETE       #"
 echo "===================================="
 echo
 
-## User setup
+### user setup
 
 # # install yay and clean up
 # git clone https://aur.archlinux.org/yay.git
