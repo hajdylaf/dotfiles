@@ -37,17 +37,18 @@ sudo pacman -Sy --needed --noconfirm \
 
 # install themes and fonts
 sudo pacman -Sy --needed --noconfirm \
-    ttf-fira-code \
     materia-gtk-theme \
-    papirus-icon-theme
+    papirus-icon-theme \
+    ttf-fira-code
 
 # install GUI apps
 sudo pacman -Sy --needed --noconfirm \
+    chromium \
     discord \
-    nemo \
     keepassxc \
     kitty \
     libreoffice-fresh \
+    nemo \
     signal-desktop
 
 # make kitty default terminal for gtk-launch
