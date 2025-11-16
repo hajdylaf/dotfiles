@@ -11,32 +11,48 @@ read -p 'Enter e-mail: ' USER_EMAIL
 # update system
 sudo pacman -Syuu --noconfirm
 
-# install system packages
+# update zen kernel headers
+sudo pacman -Sy --needed --noconfirm \
+    linux-zen-headers
+
+# install CLI utils
 sudo pacman -Sy --needed --noconfirm \
     bat \
-    discord \
     dust \
     fzf \
     git \
     go \
-    keepassxc \
-    kitty \
     less \
-    libreoffice-fresh \
-    linux-zen-headers \
     man \
     ncdu \
     neovim \
     rsync \
-    signal-desktop \
     tldr \
     tmux \
     tree \
-    ttf-fira-code \
     unzip \
     xclip \
     zip \
     zsh
+
+# install themes and fonts
+sudo pacman -Sy --needed --noconfirm \
+    ttf-fira-code \
+    materia-gtk-theme \
+    papirus-icon-theme
+
+# install GUI apps
+sudo pacman -Sy --needed --noconfirm \
+    discord \
+    nemo \
+    keepassxc \
+    kitty \
+    libreoffice-fresh \
+    signal-desktop
+
+# make kitty default terminal for gtk-launch
+sudo rm -f /usr/bin/xdg-terminal-exec
+sudo ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
 # clear pacman cache
 sudo pacman -Scc --noconfirm
