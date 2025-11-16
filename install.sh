@@ -15,6 +15,11 @@ echo "#      STARTING INSTALLATION       #"
 echo "===================================="
 echo
 
+for i in {5..1}; do
+    printf $i...
+done
+echo
+
 # update system
 pacman -Syuu --noconfirm
 
@@ -97,4 +102,3 @@ echo
 
 # # sync dotfiles
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
-
