@@ -15,8 +15,10 @@ echo "#      STARTING INSTALLATION       #"
 echo "===================================="
 echo
 
+# countdown
 for i in {5..1}; do
     printf $i...
+    sleep 1
 done
 echo
 
