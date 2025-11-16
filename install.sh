@@ -51,7 +51,11 @@ pacman -Sy --needed --noconfirm \
     ttf-fira-code
 
 # sync system-wide config
+git clone https://github.com/hajdylaf/dotfiles.git
+cd dotfiles
 rsync -rv etc/* /etc/.
+cd - &> /dev/null
+rm -rf dotfiles
 
 # install GUI apps
 pacman -Sy --needed --noconfirm \
