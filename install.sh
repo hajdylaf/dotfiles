@@ -128,10 +128,3 @@ echo "===================================="
 echo "#      INSTALLATION COMPLETE       #"
 echo "===================================="
 echo
-
-# # install oh-my-zsh
-# # TODO: make installer exit zsh shell after installation and return to next steps
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# # sync dotfiles
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
