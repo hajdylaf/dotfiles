@@ -56,8 +56,6 @@ pacman -Sy --needed --noconfirm \
 
 # install themes and fonts
 pacman -Sy --needed --noconfirm \
-    lightdm-webkit-theme-litarvan \
-    lightdm-webkit2-greeter \
     materia-gtk-theme \
     papirus-icon-theme \
     ttf-fira-code
@@ -87,9 +85,6 @@ ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
 # clone dotfiles repository
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
-
-# sync system-wide config
-rsync -rv etc/* /etc/.
 
 # sync dotfiles to skel
 rsync -rv home/.* /etc/skel/.
