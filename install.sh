@@ -92,9 +92,11 @@ sudo -u dummy bash -c '
 cd $HOME
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si --noconfirm
-cd - &> /dev/null
+makepkg -s --noconfirm
 '
+cd /home/dummy/yay
+pacman -U --noconfirm *.pkg.tar.zst
+cd - &> /dev/null
 userdel dummy
 rm -rf /home/dummy
 
