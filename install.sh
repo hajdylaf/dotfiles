@@ -86,6 +86,17 @@ pacman -Rsn --noconfirm \
 # clear pacman cache
 pacman -Scc --noconfirm
 
+# use dummy user to install yay and clean up
+useradd dummy -m
+su dummy && cd
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -i
+cd - &> /dev/null
+rm -rf yay
+exit
+userdel dummy
+
 ## configuration
 
 # use ly as desktop manager
@@ -114,15 +125,6 @@ echo "===================================="
 echo "#      INSTALLATION COMPLETE       #"
 echo "===================================="
 echo
-
-### user setup
-
-# # install yay and clean up
-# git clone https://aur.archlinux.org/yay.git
-# cd yay
-# makepkg -i
-# cd - &> /dev/null
-# rm -rf yay
 
 # # install oh-my-zsh
 # # TODO: make installer exit zsh shell after installation and return to next steps
