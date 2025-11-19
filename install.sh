@@ -51,6 +51,7 @@ pacman -Sy --needed --noconfirm \
     man \
     ncdu \
     neovim \
+    openssh \
     pwgen \
     rsync \
     tldr \
