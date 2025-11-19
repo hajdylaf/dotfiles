@@ -44,6 +44,7 @@ pacman -Sy --needed --noconfirm \
     man \
     ncdu \
     neovim \
+    pwgen \
     rsync \
     tldr \
     tmux \
@@ -67,9 +68,12 @@ pacman -Sy --needed --noconfirm \
     discord \
     keepassxc \
     kitty \
+    mpv \
     libreoffice-fresh \
     nemo \
-    signal-desktop
+    ristretto \
+    signal-desktop \
+    thunderbird
 
 # clear pacman cache
 pacman -Scc --noconfirm
