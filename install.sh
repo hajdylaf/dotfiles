@@ -46,6 +46,7 @@ pacman -Sy --needed --noconfirm \
     fzf \
     git \
     go \
+    htop \
     less \
     man \
     ncdu \
@@ -75,6 +76,7 @@ pacman -Sy --needed --noconfirm \
     libreoffice-fresh \
     ristretto \
     signal-desktop \
+    timeshift \
     thunderbird
 
 # clear unwanted packages
