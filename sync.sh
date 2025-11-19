@@ -7,6 +7,8 @@ echo "#        SYNCING DOTFILES          #"
 echo "===================================="
 echo
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # clone repository
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
