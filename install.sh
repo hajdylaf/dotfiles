@@ -87,15 +87,16 @@ pacman -Rsn --noconfirm \
 pacman -Scc --noconfirm
 
 # use dummy user to install yay and clean up
-useradd dummy -m
-su dummy && cd
+useradd -m -G wheel -s /bin/bash dummy
+sudo -u dummy bash -c '
+cd $HOME
 git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -i
+makepkg -si --noconfirm
 cd - &> /dev/null
-rm -rf yay
-exit
+'
 userdel dummy
+rm -rf /home/dummy
 
 ## configuration
 
