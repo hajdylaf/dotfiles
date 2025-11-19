@@ -29,6 +29,12 @@ echo
 # update system
 pacman -Syuu --noconfirm
 
+# install desktop environment
+pacman -Sy --needed --noconfirm \
+    ly \
+    xfce4 \
+    xfce4-goodies
+
 # update zen kernel headers
 pacman -Sy --needed --noconfirm \
     linux-zen-headers
@@ -66,21 +72,22 @@ pacman -Sy --needed --noconfirm \
     discord \
     keepassxc \
     kitty \
-    mpv \
     libreoffice-fresh \
-    nemo \
     ristretto \
     signal-desktop \
     thunderbird
+
+# clear unwanted packages
+pacman -Rsn --noconfirm \
+    xfce4-terminal
 
 # clear pacman cache
 pacman -Scc --noconfirm
 
 ## configuration
 
-# make kitty default terminal for gtk-launch
-rm -f /usr/bin/xdg-terminal-exec
-ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
+# use ly as desktop manager
+systemctl enable ly
 
 # clone dotfiles repository
 git clone https://github.com/hajdylaf/dotfiles.git
@@ -92,10 +99,6 @@ rsync -rv home/* /etc/skel/.
 
 # make scripts executable
 chmod +x /etc/skel/.local/bin/*
-
-# load desktop settings
-dconf load / < desktop.cfg
-nohup budgie-panel --replace &> /dev/null &
 
 # clean up
 cd - &> /dev/null
