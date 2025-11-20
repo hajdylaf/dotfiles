@@ -48,6 +48,7 @@ pacman -Sy --needed --noconfirm \
     fzf \
     git \
     go \
+    gvfs \
     htop \
     less \
     man \
@@ -77,6 +78,7 @@ pacman -Sy --needed --noconfirm \
     keepassxc \
     kitty \
     libreoffice-fresh \
+    pavucontrol \
     ristretto \
     signal-desktop \
     thunderbird \
