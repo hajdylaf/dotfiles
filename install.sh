@@ -35,8 +35,10 @@ pacman -Sy --needed --noconfirm \
     xfce4 \
     xfce4-goodies
 
-# update zen kernel headers
+# update kernel headers and base package
 pacman -Sy --needed --noconfirm \
+    base-devel \
+    linux-headers \
     linux-zen-headers
 
 # install CLI utils
