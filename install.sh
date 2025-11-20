@@ -77,8 +77,10 @@ pacman -Sy --needed --noconfirm \
     libreoffice-fresh \
     ristretto \
     signal-desktop \
+    thunderbird \
     timeshift \
-    thunderbird
+    virtualbox \
+    virtualbox-guest-iso
 
 # clear unwanted packages
 pacman -Rsn --noconfirm \
