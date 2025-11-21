@@ -29,17 +29,18 @@ echo
 # update system
 pacman -Syuu --noconfirm
 
-# install desktop environment
-pacman -Sy --needed --noconfirm \
-    ly \
-    xfce4 \
-    xfce4-goodies
-
 # update kernel headers and base package
 pacman -Sy --needed --noconfirm \
     base-devel \
     linux-headers \
     linux-zen-headers
+
+# install desktop environment
+pacman -Sy --needed --noconfirm \
+    ly \
+    xfce4 \
+    xfce4-goodies \
+    xorg-server
 
 # install CLI utils
 pacman -Sy --needed --noconfirm \
