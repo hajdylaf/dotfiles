@@ -113,6 +113,9 @@ rm -rf /home/dummy
 
 ## configuration
 
+# configure xorg
+X -configure
+
 # use ly as desktop manager
 systemctl enable ly
 
