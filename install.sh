@@ -78,6 +78,9 @@ pacman -Sy --needed --noconfirm \
     keepassxc \
     kitty \
     libreoffice-fresh \
+    mugshot \
+    network-manager-applet \
+    nm-connection-editor \
     pavucontrol \
     ristretto \
     signal-desktop \
@@ -111,6 +114,9 @@ rm -rf /home/dummy
 
 # use ly as desktop manager
 systemctl enable ly
+
+# turn off onboard speaker
+rmmod pcspkr
 
 # clone dotfiles repository
 git clone https://github.com/hajdylaf/dotfiles.git
