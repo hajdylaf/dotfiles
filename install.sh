@@ -120,7 +120,7 @@ X -configure
 systemctl enable ly
 
 # turn off onboard speaker
-rmmod pcspkr
+echo "blacklist pcspkr" > /etc/modprobe.d/blacklist-pcspkr.conf
 
 # clone dotfiles repository
 git clone https://github.com/hajdylaf/dotfiles.git
