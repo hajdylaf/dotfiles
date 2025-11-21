@@ -133,6 +133,21 @@ chmod +x /etc/skel/.local/bin/*
 cd - &> /dev/null
 rm -rf dotfiles
 
+# sync desktop config for all existing users
+USERS=$(grep -E "/home" /etc/passwd | cut -d: -f1)
+for USERNAME in $USERS; do
+    sudo -u "$USERNAME" bash -c '
+        git clone https://github.com/hajdylaf/dotfiles.git
+        cd dotfiles
+        rsync -rv home/.* $HOME/.
+        rsync -rv home/* $HOME/.
+        chmod +x $HOME/.local/bin/*
+        cd - &> /dev/null
+        rm -rf dotfiles
+    '
+done
+
+
 ## finish and exit
 
 # exit info
