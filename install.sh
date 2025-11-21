@@ -87,7 +87,7 @@ pacman -Sy --needed --noconfirm \
     thunderbird \
     timeshift \
     virtualbox \
-    virtualbox-guest-iso
+    virtualbox-host-dkms
 
 # clear unwanted packages
 pacman -Rsn --noconfirm \
