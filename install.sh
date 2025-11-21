@@ -29,8 +29,16 @@ echo
 # update system
 pacman -Syuu --noconfirm
 
-# update zen kernel headers
+# install desktop environment
 pacman -Sy --needed --noconfirm \
+    ly \
+    xfce4 \
+    xfce4-goodies
+
+# update kernel headers and base package
+pacman -Sy --needed --noconfirm \
+    base-devel \
+    linux-headers \
     linux-zen-headers
 
 # install CLI utils
@@ -40,10 +48,13 @@ pacman -Sy --needed --noconfirm \
     fzf \
     git \
     go \
+    gvfs \
+    htop \
     less \
     man \
     ncdu \
     neovim \
+    openssh \
     pwgen \
     rsync \
     tldr \
@@ -66,21 +77,46 @@ pacman -Sy --needed --noconfirm \
     discord \
     keepassxc \
     kitty \
-    mpv \
     libreoffice-fresh \
-    nemo \
+    mugshot \
+    network-manager-applet \
+    nm-connection-editor \
+    pavucontrol \
     ristretto \
     signal-desktop \
-    thunderbird
+    thunderbird \
+    timeshift \
+    virtualbox \
+    virtualbox-host-dkms
+
+# clear unwanted packages
+pacman -Rsn --noconfirm \
+    xfce4-terminal
 
 # clear pacman cache
 pacman -Scc --noconfirm
 
+# use dummy user to install yay and clean up
+useradd -m -G wheel -s /bin/bash dummy
+sudo -u dummy bash -c '
+cd $HOME
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -s --noconfirm
+'
+cd /home/dummy/yay
+pacman -U --noconfirm *.pkg.tar.zst
+cd - &> /dev/null
+userdel dummy
+rm -rf /home/dummy
+
 ## configuration
 
-# make kitty default terminal for gtk-launch
-rm -f /usr/bin/xdg-terminal-exec
-ln -sf /usr/bin/kitty /usr/bin/xdg-terminal-exec
+# use ly as desktop manager
+systemctl enable ly
+
+# turn off onboard speaker
+rmmod pcspkr
 
 # clone dotfiles repository
 git clone https://github.com/hajdylaf/dotfiles.git
@@ -93,13 +129,24 @@ rsync -rv home/* /etc/skel/.
 # make scripts executable
 chmod +x /etc/skel/.local/bin/*
 
-# load desktop settings
-dconf load / < desktop.cfg
-nohup budgie-panel --replace &> /dev/null &
-
 # clean up
 cd - &> /dev/null
 rm -rf dotfiles
+
+# sync desktop config for all existing users
+USERS=$(grep -E "/home" /etc/passwd | cut -d: -f1)
+for USERNAME in $USERS; do
+    sudo -u "$USERNAME" bash -c '
+        git clone https://github.com/hajdylaf/dotfiles.git
+        cd dotfiles
+        rsync -rv home/.* $HOME/.
+        rsync -rv home/* $HOME/.
+        chmod +x $HOME/.local/bin/*
+        cd - &> /dev/null
+        rm -rf dotfiles
+    '
+done
+
 
 ## finish and exit
 
@@ -109,19 +156,3 @@ echo "===================================="
 echo "#      INSTALLATION COMPLETE       #"
 echo "===================================="
 echo
-
-### user setup
-
-# # install yay and clean up
-# git clone https://aur.archlinux.org/yay.git
-# cd yay
-# makepkg -i
-# cd - &> /dev/null
-# rm -rf yay
-
-# # install oh-my-zsh
-# # TODO: make installer exit zsh shell after installation and return to next steps
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# # sync dotfiles
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
