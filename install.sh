@@ -137,6 +137,7 @@ rm -rf dotfiles
 USERS=$(grep -E "/home" /etc/passwd | cut -d: -f1)
 for USERNAME in $USERS; do
     sudo -u "$USERNAME" bash -c '
+        cd
         git clone https://github.com/hajdylaf/dotfiles.git
         cd dotfiles
         rsync -rv home/.* $HOME/.
