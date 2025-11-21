@@ -4,17 +4,35 @@
 configs:
 - level: 0
   monitors:
-  - id: "219c758276014cf095bbaa65c548f7934ea6afe1"
-    display_name: "Virtual-1"
+  - id: "f8c85aed7b263887b188d617115d420cbf57e3c7"
+    display_name: "Iiyama North America PL3480WQ 1222533300731 (DisplayPort-0)"
     geometry:
       x: 0
       y: 0
-      width: 1280
-      height: 800
+      width: 3440
+      height: 1440
   icons:
+    "/run/media/filip/3817-502A":
+      row: 2
+      col: 0
+      last_seen: 1763601983014999
     "/":
       row: 1
       col: 0
+    "/home/filip/Desktop/dotfiles":
+      row: 5
+      col: 0
+    "trash:///":
+      row: 2
+      col: 0
+    "76AE53ACAE5363A1":
+      row: 3
+      col: 0
+      last_seen: 1763605471233272
+    "067639B47639A4F9":
+      row: 4
+      col: 0
+      last_seen: 1763605471236374
     "/home/filip":
       row: 0
       col: 0
