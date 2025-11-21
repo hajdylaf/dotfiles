@@ -10,5 +10,5 @@
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="last-show-hidden" type="bool" value="true"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,149,50,50,50,50,50,738,50,50,93,50,178"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,150,143,50,50,50,50,722,50,50,69,50,74"/>
 </channel>

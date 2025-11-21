@@ -13,6 +13,7 @@
       <property name="icon-size" type="uint" value="0"/>
       <property name="size" type="uint" value="36"/>
       <property name="plugin-ids" type="array">
+        <value type="int" value="5"/>
         <value type="int" value="33"/>
         <value type="int" value="29"/>
         <value type="int" value="4"/>
@@ -23,6 +24,7 @@
         <value type="int" value="6"/>
         <value type="int" value="21"/>
         <value type="int" value="24"/>
+        <value type="int" value="23"/>
         <value type="int" value="32"/>
         <value type="int" value="30"/>
         <value type="int" value="28"/>
@@ -51,14 +53,14 @@
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="80"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="11"/>
-        <value type="int" value="12"/>
         <value type="int" value="15"/>
         <value type="int" value="14"/>
         <value type="int" value="13"/>
         <value type="int" value="16"/>
         <value type="int" value="17"/>
         <value type="int" value="18"/>
+        <value type="int" value="2"/>
+        <value type="int" value="41"/>
       </property>
       <property name="border-width" type="uint" value="10"/>
       <property name="enter-opacity" type="uint" value="100"/>
@@ -93,8 +95,6 @@
     <property name="plugin-9" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-11" type="string" value="showdesktop"/>
-    <property name="plugin-12" type="string" value="separator"/>
     <property name="plugin-13" type="string" value="launcher">
       <property name="items" type="array">
         <value type="string" value="17635995711.desktop"/>
@@ -257,5 +257,9 @@
       </property>
     </property>
     <property name="plugin-33" type="string" value="tasklist"/>
+    <property name="plugin-2" type="string" value="thunar-tpa"/>
+    <property name="plugin-5" type="string" value="showdesktop"/>
+    <property name="plugin-23" type="string" value="xfce4-clipman-plugin"/>
+    <property name="plugin-41" type="string" value="xfce4-time-out-plugin"/>
   </property>
 </channel>

@@ -10,4 +10,7 @@
       <value type="string" value="xfce4-xkb-plugin"/>
     </property>
   </property>
+  <property name="plugin" type="empty">
+    <property name="show-in-menu" type="string" value="show-all"/>
+  </property>
 </channel>
