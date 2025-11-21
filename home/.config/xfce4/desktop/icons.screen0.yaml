@@ -12,18 +12,21 @@ configs:
       width: 3440
       height: 1440
   icons:
+    "trash:///":
+      row: 2
+      col: 0
+    "/home/filip/Desktop/xfce-desktop-backup":
+      row: 4
+      col: 0
     "/run/media/filip/3817-502A":
       row: 2
       col: 0
       last_seen: 1763601983014999
-    "/":
-      row: 1
+    "/home/filip/Desktop/xfce-backup.tar.gz":
+      row: 5
       col: 0
     "/home/filip/Desktop/dotfiles":
       row: 3
-      col: 0
-    "trash:///":
-      row: 2
       col: 0
     "76AE53ACAE5363A1":
       row: 3
@@ -33,6 +36,15 @@ configs:
       row: 4
       col: 0
       last_seen: 1763605471236374
+    "/":
+      row: 1
+      col: 0
+    "/home/filip/Desktop/xfce4-backup.tar.gz":
+      row: 5
+      col: 0
     "/home/filip":
       row: 0
+      col: 0
+    "/home/filip/Desktop/backup":
+      row: 6
       col: 0
