@@ -69,6 +69,7 @@ pacman -Sy --needed --noconfirm \
 # install themes and fonts
 pacman -Sy --needed --noconfirm \
     materia-gtk-theme \
+    noto-fonts-emoji \
     papirus-icon-theme \
     ttf-fira-code
 
