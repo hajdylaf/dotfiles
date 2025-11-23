@@ -86,6 +86,7 @@ pacman -Sy --needed --noconfirm \
     pavucontrol \
     ristretto \
     signal-desktop \
+    system-config-printer \
     thunderbird \
     timeshift \
     virtualbox \
