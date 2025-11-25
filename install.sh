@@ -92,6 +92,15 @@ pacman -Sy --needed --noconfirm \
     virtualbox \
     virtualbox-host-dkms
 
+# install other dependencies
+pacman -Sy --needed --noconfirm \
+    cups \
+    cups-filters \
+    foomatic-db \
+    foomatic-db-engine \
+    foomatic-db-ppds \
+    ghostscript
+
 # clear unwanted packages
 pacman -Rsn --noconfirm \
     xfce4-terminal
