@@ -1,29 +1,38 @@
 # dotfiles
 
-My configuration files for Arch Linux, ZSH and other tools.
+My configuration files for ArchLinux WSL, ZSH and other tools. Setup guide:
 
-1) Install deps (root):
+1) Install WSL (Powershell):
+
+```powershell
+wsl --install -d ArchLinux --location E:/
+```
+
+2) Install deps (bash as root):
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/install.sh)"
 ```
 
-2) Create user with sudo:
+3) Create user with sudo:
 
 ```sh
 useradd -G wheel -m user
 passwd user
 su user
-cd
 ```
 
-3) Install Oh-my-zsh:
+```sh
+cd $HOME
+```
+
+4) Install Oh-my-zsh:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-4) Sync dotfiles:
+5) Sync dotfiles:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
@@ -33,4 +42,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/hea
 
 ```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+6) Set default WSL user (Powershell)
+
+```powershell
+wsl --manage ArchLinux --set-default-user user
 ```
