@@ -36,8 +36,9 @@ else
     cd "$REPO_DIR"
 fi
 
-# Ensure modules are readable by the user we're about to create
-chmod -R a+rX "$REPO_DIR/modules" "$REPO_DIR/scripts" 2>/dev/null || true
+# Ensure repo files are traversable/readable by the user we're about to create
+[ -n "$TMPDIR" ] && chmod a+rX "$TMPDIR" 2>/dev/null || true
+chmod -R a+rX "$REPO_DIR" 2>/dev/null || true
 
 # ── Input collection (everything upfront) ──────────────────────────────────
 if [ -z "${NEW_USER:-}" ]; then
