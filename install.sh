@@ -53,9 +53,6 @@ pacman -Sy --needed --noconfirm \
 # clear pacman cache
 pacman -Scc --noconfirm
 
-# sync dotfiles
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
-
 # exit info
 echo
 echo "===================================="

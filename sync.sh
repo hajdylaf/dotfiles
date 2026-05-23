@@ -7,13 +7,6 @@ echo "#        SYNCING DOTFILES          #"
 echo "===================================="
 echo
 
-# fix this to be headless
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
-sed -i.tmp 's:env zsh::g' install.sh
-sed -i.tmp 's:chsh -s .*$::g' install.sh
-sh install.sh
-rm install.sh
-
 # clone repository
 if [ -d dotfiles ]; then
     rm -rf dotfiles
