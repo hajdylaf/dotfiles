@@ -14,6 +14,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/hea
 useradd -G wheel -m user
 passwd user
 su user
+cd
 ```
 
 3) Install Oh-my-zsh:
