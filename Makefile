@@ -7,7 +7,7 @@ run:
 	docker run -it dotfiles-test
 
 clean:
-	docker rmi dotfiles-test
+	docker rmi dotfiles-test 2>/dev/null || true
 
 lint:
 	shellcheck modules/*.sh setup.sh

@@ -1,26 +1,34 @@
 # ===========================================================================
 #  Test build for dotfiles setup
-#  Build:  docker build -t dotfiles-test .
-#  Verify it succeeds — all RUN checks are inside the image.
+#  Simulates curl | sh — exercises mktemp + git clone path
+#  Build:  make test
 # ===========================================================================
 FROM archlinux:latest
 
-# Pacman init + git needed to clone (if fallback path is hit)
 RUN pacman -Syu --noconfirm git
 
-WORKDIR /opt/dotfiles
+WORKDIR /repo
 COPY . .
 
-# Non-interactive mode via environment variables
-ENV NEW_USER=testuser
+# Init a local git repo as the clone source
+RUN git init && git config user.email test@test && git config user.name test && \
+    git add -A && git commit -m "test"
+
+# Create a copy without .git/ so setup.sh takes the curl-pipe path (no REPO_DIR, no local clone)
+RUN cp -a /repo /runner && rm -rf /runner/.git
+
+# Redirect the git clone URL in setup.sh to our local repo
+RUN git config --global url."/repo".insteadOf "https://github.com/hajdylaf/dotfiles.git"
+
+ENV SSH_EMAIL=test@example.com
 ENV USER_PASS=testpass
 ENV ROOT_PASS=rootpass
-ENV SSH_EMAIL=test@example.com
-ENV REPO_DIR=/opt/dotfiles
+ENV NEW_USER=testuser
 
-RUN bash setup.sh
+# No REPO_DIR set — forces the curl-pipe code path (mktemp + git clone)
+RUN bash /runner/setup.sh
 
-# ── Verify everything is in place ──────────────────────────────────────────
-RUN bash tests/run-tests.sh
+# Run tests (copy from /runner since the temp clone was cleaned up)
+RUN cp -r /runner/tests /opt/tests && bash /opt/tests/run-tests.sh
 
 CMD ["/bin/zsh"]
