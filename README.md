@@ -27,3 +27,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 ```
+
+5) Set up SSH key:
+
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
