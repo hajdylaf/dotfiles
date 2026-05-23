@@ -54,9 +54,6 @@ pacman -Sy --needed --noconfirm \
 # clear pacman cache
 pacman -Scc --noconfirm
 
-# sync etc
-rsync -rv etc/* /etc/.
-
 # exit info
 echo
 echo "===================================="
