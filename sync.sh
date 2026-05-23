@@ -14,6 +14,9 @@ fi
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
 
+# sync etc
+rsync -rv etc/* /etc/.
+
 # sync dotfiles
 rsync -rv home/.* $HOME/.
 
