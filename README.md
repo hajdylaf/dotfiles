@@ -34,19 +34,19 @@ cd $HOME
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-6) Install yay:
+6) Sync dotfiles:
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
+```
+
+7) Install yay:
 
 ```sh
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-```
-
-7) Sync dotfiles:
-
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 ```
 
 8) Set up SSH key:
