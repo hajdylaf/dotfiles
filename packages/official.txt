@@ -1,0 +1,27 @@
+# Official Arch Linux repository packages
+# One package per line. Lines starting with # are ignored.
+
+base-devel
+bat
+dust
+fzf
+git
+go
+gvfs
+htop
+less
+man
+ncdu
+neovim
+openssh
+pwgen
+rsync
+sudo
+tldr
+tmux
+tree
+unzip
+wget
+xclip
+zip
+zsh

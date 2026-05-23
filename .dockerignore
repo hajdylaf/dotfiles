@@ -1,0 +1,5 @@
+.git/
+.gitignore
+refactor_plan.md
+Dockerfile
+.dockerignore
