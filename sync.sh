@@ -15,6 +15,9 @@ sh install.sh
 rm install.sh
 
 # clone repository
+if [ -d dotfiles ]; then
+    rm -rf dotfiles
+fi
 git clone https://github.com/hajdylaf/dotfiles.git
 cd dotfiles
 

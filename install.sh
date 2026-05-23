@@ -45,6 +45,7 @@ pacman -Sy --needed --noconfirm \
     tmux \
     tree \
     unzip \
+    wget \
     xclip \
     zip \
     zsh
