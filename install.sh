@@ -52,19 +52,8 @@ pacman -Sy --needed --noconfirm \
 # clear pacman cache
 pacman -Scc --noconfirm
 
-# clone dotfiles repository
-git clone https://github.com/hajdylaf/dotfiles.git
-cd dotfiles
-
-# sync dotfiles to skel
-rsync -rv home/.* $HOME/.
-
-# make scripts executable
-chmod +x $HOME/.local/bin/*
-
-# clean up
-cd - &> /dev/null
-rm -rf dotfiles
+# sync dotfiles
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 
 # exit info
 echo
