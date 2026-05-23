@@ -26,6 +26,10 @@ elif [ -f "$(dirname "$0")/.git/HEAD" ] 2>/dev/null; then
     info "Running from local clone at $REPO_DIR"
 else
     TMPDIR=$(mktemp -d)
+    if ! command -v git &>/dev/null; then
+        info "git not found, installing via pacman..."
+        pacman -Syu --noconfirm git
+    fi
     info "Fetching dotfiles repository..."
     git clone --depth 1 https://github.com/hajdylaf/dotfiles.git "$TMPDIR/dotfiles"
     REPO_DIR="$TMPDIR/dotfiles"
