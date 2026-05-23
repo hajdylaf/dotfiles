@@ -22,29 +22,31 @@ passwd user
 su user
 ```
 
+4) Make sure to `cd` into your home dir:
+
 ```sh
 cd $HOME
 ```
 
-4) Install Oh-my-zsh:
+5) Install Oh-my-zsh:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-5) Sync dotfiles:
+6) Sync dotfiles:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 ```
 
-5) Set up SSH key:
+7) Set up SSH key:
 
 ```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-6) Set default WSL user (Powershell)
+8) Set default WSL user (Powershell)
 
 ```powershell
 wsl --manage ArchLinux --set-default-user user
