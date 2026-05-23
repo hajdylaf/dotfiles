@@ -27,8 +27,8 @@ elif [ -f "$(dirname "$0")/.git/HEAD" ] 2>/dev/null; then
 else
     TMPDIR=$(mktemp -d)
     if ! command -v git &>/dev/null; then
-        info "git not found, installing via pacman..."
-        pacman -Syu --noconfirm git
+        info "git not found, installing..."
+        pacman -Syu --noconfirm --quiet git >/dev/null
     fi
     info "Fetching dotfiles repository..."
     git clone --depth 1 https://github.com/hajdylaf/dotfiles.git "$TMPDIR/dotfiles"
