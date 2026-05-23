@@ -41,6 +41,7 @@ pacman -Sy --needed --noconfirm \
     openssh \
     pwgen \
     rsync \
+    sudo \
     tldr \
     tmux \
     tree \
