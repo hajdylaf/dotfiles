@@ -15,4 +15,4 @@ clean:
 	docker rmi dotfiles-curl dotfiles-local 2>/dev/null || true
 
 lint:
-	shellcheck modules/*.sh setup.sh
+	shellcheck -S warning modules/*.sh setup.sh

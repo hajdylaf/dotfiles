@@ -33,7 +33,7 @@ else
     info "Fetching dotfiles repository..."
     git clone --depth 1 https://github.com/hajdylaf/dotfiles.git "$TMPDIR/dotfiles"
     REPO_DIR="$TMPDIR/dotfiles"
-    cd "$REPO_DIR"
+    cd "$REPO_DIR" || exit
 fi
 
 # Ensure repo files are traversable/readable by the user we're about to create
@@ -48,18 +48,19 @@ if [ -z "${NEW_USER:-}" ]; then
     echo "===================================="
     echo
 
-    read -p "Username [user]: " input
+    read -r -p "Username [user]: " input
     NEW_USER="${input:-user}"
 
     while true; do
-        read -s -p "Password for $NEW_USER: " USER_PASS; echo
-        read -s -p "Confirm password: " confirm; echo
+        read -r -s -p "Password for $NEW_USER: " USER_PASS; echo
+        read -r -s -p "Confirm password: " confirm; echo
         [ "$USER_PASS" = "$confirm" ] && break
         echo "Passwords do not match. Try again."
     done
 
-    read -s -p "Root password (leave empty to keep current): " ROOT_PASS; echo
-    read -p "Email for SSH key: " SSH_EMAIL
+    read -r -s -p "Root password (leave empty to keep current): " ROOT_PASS
+    export ROOT_PASS; echo
+    read -r -p "Email for SSH key: " SSH_EMAIL
 else
     info "Non-interactive mode — using NEW_USER=$NEW_USER"
     USER_PASS="${USER_PASS:-changeme}"
@@ -75,6 +76,7 @@ for i in 5 4 3 2 1; do printf "%s..." "$i"; sleep 1; done; echo
 # ── Run root-phase modules ─────────────────────────────────────────────────
 ROOT_MODULES="00-system.sh 01-user.sh 02-yay.sh 03-packages.sh"
 
+# shellcheck disable=SC1090,SC2218
 for mod in $ROOT_MODULES; do
     source "$REPO_DIR/modules/$mod"
     module_run
@@ -96,6 +98,7 @@ warn() { printf "\033[1;33m[ WARN ]\033[0m %s\n" "\$*"; }
 USER_MODULES="04-ohmyzsh.sh 05-dotfiles.sh 06-curl-installs.sh 07-ssh.sh"
 
 for mod in \$USER_MODULES; do
+    # shellcheck disable=SC1090,SC2218
     source "\$REPO_DIR/modules/\$mod"
     module_run
 done
@@ -105,6 +108,7 @@ chmod +x "$USER_SCRIPT"
 su - "$NEW_USER" -c "bash $USER_SCRIPT" || warn "User-phase setup had issues, check output above"
 
 # ── Cleanup ────────────────────────────────────────────────────────────────
+# shellcheck disable=SC1090,SC2218
 source "$REPO_DIR/modules/08-cleanup.sh"
 module_run
 

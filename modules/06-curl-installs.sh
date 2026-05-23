@@ -8,6 +8,7 @@ module_run() {
     log "Running $MODULE_NAME..."
 
     if [ -f "$REPO_DIR/scripts/curl-installs.sh" ]; then
+        # shellcheck disable=SC1090
         source "$REPO_DIR/scripts/curl-installs.sh"
     fi
 
