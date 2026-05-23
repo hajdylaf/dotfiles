@@ -23,6 +23,8 @@ chmod +x $HOME/.local/bin/*
 # clean up
 cd - &> /dev/null
 rm -rf dotfiles
+rm .*.pre-oh-my-zsh
+rm .bash*
 
 # exit info
 echo
