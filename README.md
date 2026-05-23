@@ -34,19 +34,28 @@ cd $HOME
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-6) Sync dotfiles:
+6) Install yay:
+
+```sh
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+7) Sync dotfiles:
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hajdylaf/dotfiles/refs/heads/main/sync.sh)"
 ```
 
-7) Set up SSH key:
+8) Set up SSH key:
 
 ```sh
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-8) Set default WSL user (Powershell)
+9) Set default WSL user (Powershell)
 
 ```powershell
 wsl --manage ArchLinux --set-default-user user
