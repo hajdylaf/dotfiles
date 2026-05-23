@@ -23,10 +23,10 @@ module_run() {
 
     # Install sudo drop-in for wheel group
     mkdir -p /etc/sudoers.d
-    install -m 440 "$REPO_DIR/etc/sudoers.d/99-dotfiles" /etc/sudoers.d/99-dotfiles
+    install -m 440 "$REPO_DIR/overlay/etc/sudoers.d/99-dotfiles" /etc/sudoers.d/99-dotfiles
 
-    # Sync any etc/ files to system (runs as root)
-    rsync -rv "$REPO_DIR/etc/" /etc/.
+    # Sync any overlay/etc files to system (runs as root)
+    rsync -rv "$REPO_DIR/overlay/etc/" /etc/.
 
     log "$MODULE_NAME complete"
 }

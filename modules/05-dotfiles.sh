@@ -7,8 +7,8 @@ MODULE_NAME="Dotfiles Sync"
 module_run() {
     log "Running $MODULE_NAME..."
 
-    if [ -d "$REPO_DIR/home" ]; then
-        rsync -rv "$REPO_DIR/home/." "$HOME/."
+    if [ -d "$REPO_DIR/overlay/home" ]; then
+        rsync -rv "$REPO_DIR/overlay/home/." "$HOME/."
     fi
 
     # Make scripts executable

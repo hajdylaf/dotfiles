@@ -32,7 +32,7 @@ My configuration files for Arch Linux WSL, ZSH and other tools.
 | User creation | Creates user with `wheel` group, sets passwords, adds sudo drop-in |
 | yay | Builds and installs the AUR helper |
 | AUR packages | Installs anything listed in `packages/aur.txt` |
-| Dotfiles | Syncs `home/` configs, sets up scripts, removes bash defaults |
+| Dotfiles | Syncs `overlay/home/` configs, sets up scripts, removes bash defaults |
 | Oh My Zsh | Installs unattended with `--unattended` flag |
 | Curl installs | Runs each command in `scripts/curl-installs.sh` |
 | SSH key | Generates Ed25519 key with empty passphrase |
@@ -47,8 +47,8 @@ My configuration files for Arch Linux WSL, ZSH and other tools.
 │   ├── 01-user.sh            # User creation + sudo
 │   ├── 02-yay.sh             # yay AUR helper (build as user, install as root)
 │   ├── 03-packages.sh        # AUR packages
-│   ├── 04-dotfiles.sh        # Sync home/ dotfiles (user-phase)
-│   ├── 05-ohmyzsh.sh         # Oh My Zsh (user-phase)
+│   ├── 04-ohmyzsh.sh         # Oh My Zsh (user-phase)
+│   ├── 05-dotfiles.sh        # Sync overlay/home/ dotfiles (user-phase)
 │   ├── 06-curl-installs.sh   # Script-based installs (user-phase)
 │   ├── 07-ssh.sh             # SSH key (user-phase)
 │   └── 08-cleanup.sh         # Cleanup temp files
@@ -57,15 +57,16 @@ My configuration files for Arch Linux WSL, ZSH and other tools.
 │   └── aur.txt               # AUR packages (one per line)
 ├── scripts/
 │   └── curl-installs.sh      # Paste curl | sh commands here
-├── etc/
-│   └── sudoers.d/
-│       └── 99-dotfiles       # Enables sudo for wheel group
-└── home/                     # Dotfiles mirrored to $HOME
-    ├── .config/
-    ├── .gitconfig
-    ├── .local/bin/
-    ├── .tmux.conf
-    └── .zshrc
+├── overlay/                  # Mirrors root filesystem
+│   ├── etc/
+│   │   └── sudoers.d/
+│   │       └── 99-dotfiles   # Enables sudo for wheel group
+│   └── home/                 # Dotfiles mirrored to $HOME
+│       ├── .config/
+│       ├── .gitconfig
+│       ├── .local/bin/
+│       ├── .tmux.conf
+│       └── .zshrc
 ```
 
 ## How to add new things
@@ -104,14 +105,14 @@ yes | curl -fsSL https://some-tool.sh/install.sh | sh
 
 ### Add a config file
 
-Place it in `home/` or `etc/` matching the target path:
+Place it in `overlay/home/` or `overlay/etc/` matching the target path:
 
 ```
-home/.config/kitty/kitty.conf   →  $HOME/.config/kitty/kitty.conf
-etc/modprobe.d/nobeep.conf      →  /etc/modprobe.d/nobeep.conf
+overlay/home/.config/kitty/kitty.conf   →  $HOME/.config/kitty/kitty.conf
+overlay/etc/modprobe.d/nobeep.conf      →  /etc/modprobe.d/nobeep.conf
 ```
 
-`04-dotfiles.sh` picks up `home/` changes automatically.
+`05-dotfiles.sh` picks up `overlay/home/` changes automatically.
 
 ### Add a new setup step
 
